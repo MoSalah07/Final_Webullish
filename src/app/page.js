@@ -11,6 +11,7 @@ export default function LoginScreen() {
 
   return (
     <section className='bg-primary-white max-h-[90vh] '>
+      <h1>anas</h1>
       <Login />
     </section>
   )
