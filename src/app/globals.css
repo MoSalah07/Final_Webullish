@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/*============= Login ===================== */
+
+.section_background_Login {
+    background-color: red;
+    background: url(/assets/images/login/group_login.png) no-repeat center center;
+    background-size: cover;
+}
