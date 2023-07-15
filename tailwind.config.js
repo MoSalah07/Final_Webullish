@@ -16,7 +16,8 @@ module.exports = {
         "primary-blue": "#149FF3",
         "primary-text": "#313131",
         "primary-white": "#fff",
-        "secondary-white": "#fdfdfd",
+        "secondary-white": "#f9f9f9",
+        "text-light": "#949494",
       },
       borderColor: {
         "primary-rounded": '8px'

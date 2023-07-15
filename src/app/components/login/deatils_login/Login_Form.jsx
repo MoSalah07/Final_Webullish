@@ -58,7 +58,7 @@ function LoginForm() {
         <div className="flex items-center gap-1">
           <input type="checkbox" id="remember" name="remember" />
           <label
-            className="text-primary-text text-sm font-medium"
+            className="text-primary-text text-xs sm:text-sm font-medium"
             htmlFor="remember"
           >
             Remember me
@@ -67,7 +67,7 @@ function LoginForm() {
         <div>
           <Link
             href={`/login`}
-            className="text-primary-blue text-sm font-medium"
+            className="text-primary-blue text-xs sm:text-sm font-medium"
           >
             Forget password?
           </Link>
