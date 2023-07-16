@@ -10,6 +10,7 @@ function LogoAside() {
           alt="logo_dashboard"
           width={70}
           height={70}
+          priority
         />
       </div>
     </div>

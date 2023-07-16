@@ -17,8 +17,13 @@ module.exports = {
         "primary-text": "#313131",
         "primary-white": "#fff",
         "primary-gray": "#EDEDED",
+        "primary-btn": "#4763E4",
+        "primary-red": "#DC2626",
         "secondary-white": "#f9f9f9",
+        "secondary-blue": "#5C73DB",
         "text-light": "#949494",
+        "text-dark": "#3E3E59",
+        'border-color': "#EAECF0",
       },
       borderRadius: {
         "primary-rounded": '8px'
