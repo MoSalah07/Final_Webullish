@@ -16,10 +16,11 @@ module.exports = {
         "primary-blue": "#149FF3",
         "primary-text": "#313131",
         "primary-white": "#fff",
+        "primary-gray": "#EDEDED",
         "secondary-white": "#f9f9f9",
         "text-light": "#949494",
       },
-      borderColor: {
+      borderRadius: {
         "primary-rounded": '8px'
       }
     },

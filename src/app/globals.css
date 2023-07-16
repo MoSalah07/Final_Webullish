@@ -10,3 +10,8 @@
     background: url(/assets/images/login/group_login.png) no-repeat center center;
     background-size: cover;
 }
+
+
+.layout_dashboard {
+    @apply h-screen block overflow-y-auto col-span-5 bg-secondary-white px-8 relative pt-4;
+}

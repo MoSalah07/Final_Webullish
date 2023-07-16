@@ -1,15 +1,17 @@
 import React from 'react'
 import Aside from '../components/aside/Aside'
+import HeadingContent from '../components/HeadingContent/HeadingContent';
 
 function layout({children}) {
   return (
       <main className='grid grid-cols-6'>
       <Aside />
-      <section className='col-span-5 h-screen bg-secondary-white'> 
+      <section className='layout_dashboard'>
+          <HeadingContent />
           {children}
       </section>
       </main>
   )
 }
 
-export default layout
+export default layout;
