@@ -1,17 +1,17 @@
-import React from 'react'
-import UploadImage from './uploadImage'
-import AddTeamMembers from './AddTeamMembers'
+import React from "react";
+import UploadImage from "./UploadImage";
+import AddTeamMembers from "./AddTeamMembers";
 
-function TeamCreate({setIsCreated}) {
+function TeamCreate({ setIsCreated }) {
   return (
     <div>
-      <div className='mb-6'>
-        <h3 className='font-semibold text-lg capitalize'>add new team</h3>
+      <div className="mb-6">
+        <h3 className="font-semibold text-lg capitalize">add new team</h3>
       </div>
-      <UploadImage />
+      <UploadImage title={`team`} />
       <AddTeamMembers setIsCreated={setIsCreated} />
     </div>
-  )
+  );
 }
 
-export default TeamCreate
+export default TeamCreate;

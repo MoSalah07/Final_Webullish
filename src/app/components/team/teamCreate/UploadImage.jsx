@@ -1,6 +1,6 @@
 import React from "react";
 
-function UploadImage() {
+function UploadImage({title = 'Image'}) {
   return (
     <div className="flex flex-col gap-2 items-center justify-center w-full">
       <label
@@ -32,7 +32,7 @@ function UploadImage() {
         </div>
         <input id="dropzone-file" type="file" className="hidden" />
       </label>
-      <p className="capitalize text-text-light">upload image your team</p>
+      <p className="capitalize text-text-light">upload image your {title}</p>
     </div>
   );
 }

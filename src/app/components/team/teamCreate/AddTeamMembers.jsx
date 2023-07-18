@@ -44,7 +44,7 @@ function AddTeamMembers({ setIsCreated }) {
             cancel
           </button>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between sm:justify-center gap-2 sm:gap-6 lg:gap-12">
-            <button className="py-2 px-4 bg-primary-btn text-primary-white rounded-primary-rounded capitalize text-sm">
+            <button className="py-2 px-8 bg-primary-btn text-primary-white rounded-primary-rounded capitalize text-sm">
               save
             </button>
             <button className="py-2 px-4 border-primary-btn border rounded-primary-rounded capitalize text-sm">

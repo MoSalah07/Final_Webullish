@@ -9,7 +9,7 @@ import TeamCreate from "@/app/components/team/teamCreate/TeamCreate";
 function Team() {
   const [isCreated, setIsCreated] = useState(false);
   return (
-    <div className="pb-12">
+    <div>
       <TeamToolbar setIsCreated={setIsCreated} />
       {isCreated ? (
         <TeamCreate setIsCreated={setIsCreated} />
