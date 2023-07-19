@@ -6,7 +6,7 @@ import iconDashboard from "../../../../../public/assets/images/icons_aside/dashb
 import iconTeam from "../../../../../public/assets/images/icons_aside/team.svg";
 import iconFqs from "../../../../../public/assets/images/icons_aside/fqs.svg";
 import iconPerformance from "../../../../../public/assets/images/icons_aside/performance.svg";
-import iconAdvertisement from "../../../../../public/assets/images/icons_aside/advertisement.svg";
+import iconAdvertisement from "../../../../../public/assets/images/icons_aside/Advertisement.svg";
 import iconLive from "../../../../../public/assets/images/icons_aside/live.svg";
 
 function AsideList() {

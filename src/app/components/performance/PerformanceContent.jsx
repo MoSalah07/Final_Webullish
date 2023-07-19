@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // Components
-import PerformanceCard from "./PerFormanceCard";
+import PerformanceCard from "./PerformanceCard";
 
 function PerformanceContent() {
   const [itemsPerformance, setItemsPerformance] = useState([
