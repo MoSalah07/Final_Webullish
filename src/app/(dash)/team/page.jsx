@@ -3,18 +3,18 @@ import React, { useState } from "react";
 // Components
 import TeamContent from "@/app/components/team/TeamContent";
 import TeamHeader from "@/app/components/team/TeamHeader";
-import TeamToolbar from "@/app/components/team/TeamToolbar";
 import TeamCreate from "@/app/components/team/teamCreate/TeamCreate";
+import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
 
 function Team() {
   const [isCreated, setIsCreated] = useState(false);
   return (
     <div>
-      <TeamToolbar setIsCreated={setIsCreated} />
       {isCreated ? (
         <TeamCreate setIsCreated={setIsCreated} />
       ) : (
         <>
+          <DynamicToolBar title={`All Team`} setIsCreated={setIsCreated} />
           <TeamHeader />
           <TeamContent />
         </>

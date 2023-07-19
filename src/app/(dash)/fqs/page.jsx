@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+// Components
 import AllFqs from "@/app/components/fqs/AllFqs";
 import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
 import CreateFqs from "@/app/components/fqs/CreateFqs";

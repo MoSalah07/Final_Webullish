@@ -9,7 +9,7 @@ function ListITem({ iconName, iconSrc = "" }) {
   const urlPathName = pathName.split("/")[1];
   return (
     <li
-      className={`p-3 rounded-primary-rounded text-text-light w-full
+      className={` p-1 sm:p-3 rounded-primary-rounded text-text-light w-full
        text-sm lg:text-base capitalize
     ${
       urlPathName === iconName
@@ -19,7 +19,7 @@ function ListITem({ iconName, iconSrc = "" }) {
     >
       <Link
         href={`/${iconName}`}
-        className="w-full flex items-center gap-2 relative"
+        className="w-full flex items-center justify-center lg:justify-stretch gap-2 relative"
       >
         <Image
           src={iconSrc}

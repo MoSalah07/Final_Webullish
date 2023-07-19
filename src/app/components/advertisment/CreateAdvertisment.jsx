@@ -1,47 +1,17 @@
 import React from "react";
 // Components
 import UploadImage from "../team/teamCreate/UploadImage";
-import DatePicker from "../utils/DatePickerInput";
 
-function CreateMagazine({ setIsCreated }) {
+function CreateAdvertisment({ setIsCreated }) {
   return (
     <div>
       <div className="mb-6">
         <h3 className="font-semibold text-lg capitalize">
-          add new blog magazine
+          add new Advertisment
         </h3>
         <form>
           <div className="my-8">
-            <UploadImage title={`magazine`} />
-          </div>
-          <h3 className="font-semibold text-lg capitalize mb-4">
-            add new magazine
-          </h3>
-          <div className="flex flex-col justify-center gap-2 mb-2">
-            <label className="capitalize font-medium" htmlFor="title">
-              title
-            </label>
-            <input
-              className={`py-2 outline-primary-btn rounded-primary-rounded px-4
-          placeholder:text-sm`}
-              id="title"
-              name="title"
-              type="text"
-              placeholder="Title"
-            />
-          </div>
-          <div className="flex flex-col justify-center gap-2 mb-2">
-            <label className="capitalize font-medium" htmlFor="author">
-              Author
-            </label>
-            <input
-              className={`py-2 outline-primary-btn rounded-primary-rounded px-4
-          placeholder:text-sm`}
-              id="author"
-              name="author"
-              type="text"
-              placeholder="Author Name"
-            />
+            <UploadImage title={`Advertisment`} />
           </div>
           <div className="flex flex-col justify-center gap-2 mb-2">
             <label className="capitalize font-medium" htmlFor="name">
@@ -65,12 +35,6 @@ function CreateMagazine({ setIsCreated }) {
               id="description"
             ></textarea>
           </div>
-          <div className="mt-8 flex flex-col justify-center gap-2 mb-2 w-full ">
-            <label className="capitalize font-medium" htmlFor="date">
-              Date
-            </label>
-            <DatePicker />
-          </div>
           <div className="flex sm:items-center flex-col justify-center gap-6 sm:gap-0 sm:flex-row sm:justify-between mt-12">
             <button
               className="py-2 px-4 border-primary-btn border rounded-primary-rounded capitalize text-sm order-[2] sm:-order-last"
@@ -93,4 +57,4 @@ function CreateMagazine({ setIsCreated }) {
   );
 }
 
-export default CreateMagazine;
+export default CreateAdvertisment;

@@ -3,6 +3,11 @@ import React from "react";
 import ListITem from "./ListITem";
 // Icons
 import iconDashboard from "../../../../../public/assets/images/icons_aside/dashboard.svg";
+import iconTeam from "../../../../../public/assets/images/icons_aside/team.svg";
+import iconFqs from "../../../../../public/assets/images/icons_aside/fqs.svg";
+import iconPerformance from "../../../../../public/assets/images/icons_aside/performance.svg";
+import iconAdvertisement from "../../../../../public/assets/images/icons_aside/advertisement.svg";
+import iconLive from "../../../../../public/assets/images/icons_aside/live.svg";
 
 function AsideList() {
   
@@ -13,11 +18,11 @@ function AsideList() {
     },
     {
       iconName: "team",
-      iconSrc: iconDashboard,
+      iconSrc: iconTeam,
     },
     {
       iconName: "fqs",
-      iconSrc: iconDashboard,
+      iconSrc: iconFqs,
     },
     {
       iconName: "magazine",
@@ -25,15 +30,15 @@ function AsideList() {
     },
     {
       iconName: "performance",
-      iconSrc: iconDashboard,
+      iconSrc: iconPerformance,
     },
     {
       iconName: "advertisement",
-      iconSrc: iconDashboard,
+      iconSrc: iconAdvertisement,
     },
     {
       iconName: "live",
-      iconSrc: iconDashboard,
+      iconSrc: iconLive,
     },
   ];
 
