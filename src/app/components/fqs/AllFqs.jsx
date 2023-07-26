@@ -2,17 +2,7 @@
 import React, { useState } from "react";
 import ItemFqs from "./ItemFqs";
 
-function AllFqs() {
-  const accordionData = [
-    {
-      title: "What is Webullish.com",
-      desc: "With more techy bells n’ webullish than our free version.With more techy bells n’ webullish than our free version. With more techy bells n’ webullish than our free version.With more techy bells n’ webullish than our free version. With more techy bells n’ webullish than our free version.With more techy bells n’ webullish than our free version.",
-    },
-    {
-      title: "What is Webullish.com",
-      desc: "With more techy bells n’ webullish than our free version.With more techy bells n’ webullish than our free version. With more techy bells n’ webullish than our free version.With more techy bells n’ webullish than our free version. With more techy bells n’ webullish than our free version.With more techy bells n’ webullish than our free version.",
-    },
-  ];
+function AllFqs({fqsArr}) {
   const [open, setOpen] = useState(false);
 
   const toggle = (index) => {
@@ -21,12 +11,12 @@ function AllFqs() {
     }
     setOpen(index);
   };
-
+  
   return (
     <div>
-      {accordionData.map((fqs, index) => (
+      { fqsArr && Array.isArray(fqsArr) && fqsArr.map((fqs, index) => (
         <ItemFqs
-          key={index}
+          key={fqs.id}
           {...fqs}
           open={index === open}
           toggle={() => toggle(index)}

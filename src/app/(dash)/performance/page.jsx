@@ -1,13 +1,54 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // Components
 import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
-// import PerformanceContent from '@/app/components/performance/PerFormanceContent';
 import PerformanceContent from "../../components/performance/PerformanceContent";
 import CreatePerformance from "@/app/components/performance/CreatePerformance";
+// Fetch
+import axios from "axios";
+import useSWR from 'swr';
+// Token
+import { getToken } from "@/app/lib/localStorage";
 
 function Performance() {
   const [isCreated, setIsCreated] = useState(false);
+  const token = getToken();
+
+  const fetcher = async (url) => {
+    try {
+      const { data } = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+      return data;
+    } catch (err) {
+      console.log(err.message);
+      return err.message;
+    }
+  }
+
+
+  const { isLoading, data: performanceArr, error } = useSWR(`https://webullish.space/api/performance/show_all/1`, fetcher);
+  
+  console.log(performanceArr)
+
+
+  // useEffect(() => {
+  //   const handlePerformance = async () => {
+  //     const { data } = await axios.get(`https://webullish.space/api/performance/show_all/1`, {
+  //       headers: {
+  //       Authorization:  `Bearer ${token}`,
+  //       }
+  //     });
+      
+  //     console.log(data);
+  //   }
+    
+  //   handlePerformance();
+  // }, [])
+
+
   return (
     <div>
       {isCreated ? (

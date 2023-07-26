@@ -1,13 +1,15 @@
-'use client';
+"use client";
 
 // Components
-import Login from './components/login/Login';
-
+import Login from "./components/login/Login";
 
 export default function LoginScreen() {
   return (
-    <section className='bg-primary-white'>
-      <Login />
-    </section>
-  )
+    <>
+      <title>Login Page</title>
+      <section className="bg-primary-white">
+        <Login />
+      </section>
+    </>
+  );
 }

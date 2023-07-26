@@ -1,5 +1,10 @@
+'use client';
 // Global Style Css
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import { useState, useEffect } from "react";
+// Toastify
+import { ToastContainer } from "react-toastify";
 // Google Fonts
 import { Poppins } from "next/font/google";
 // Google Fonts
@@ -14,9 +19,18 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Avoid hydration error
+  useEffect(() => {
+    setIsLoading(true);
+  }, [])
   return (
     <html lang="en">
-      <body className={`${poppins.className}`}>{children}</body>
+      <body className={`${poppins.className}`}>
+        {isLoading && <ToastContainer limit={1} /> }
+        {children}
+      </body>
     </html>
   );
 }

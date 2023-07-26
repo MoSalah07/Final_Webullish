@@ -3,7 +3,7 @@ import React from "react";
 import DynamicHeadingContent from "../utils/DynamicHeadingContent";
 import AdvertismentCart from "./AdvertismentCart";
 
-function AdvertismentContent() {
+function AdvertismentContent({ advertisementArr }) {
   return (
     <div>
       <DynamicHeadingContent
@@ -11,7 +11,7 @@ function AdvertismentContent() {
         title="Meet the Webullish advertisment"
         description="See all recently published articles"
       />
-      <AdvertismentCart />
+      <AdvertismentCart advertisementArr={advertisementArr} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function UploadImage({title = 'Image'}) {
+function UploadImage({title = 'Image', setImageVal = '', register = {}, errors = {}}) {
   return (
     <div className="flex flex-col gap-2 items-center justify-center w-full">
       <label
@@ -30,9 +30,10 @@ function UploadImage({title = 'Image'}) {
             SVG, PNG, JPG or GIF
           </p>
         </div>
-        <input id="dropzone-file" type="file" className="hidden" />
+        <input {...register('image', {required: 'Please Upload Image Or Video'})} id="dropzone-file" type="file" className="hidden" />
       </label>
       <p className="capitalize text-text-light">upload image your {title}</p>
+      {errors.image && <div className="text-red-500">{errors.image.message}</div>}
     </div>
   );
 }

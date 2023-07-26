@@ -18,7 +18,42 @@
 }
 
 
-/*================================== Fqs  ========================================================================*/
+/*================================== Fqs ========================================================================*/
 .ReactCollapse--collapse {
     transition: height 500ms;
+  }
+
+
+  /* ================= Aside =======================*/
+
+  .aside-icon:hover span {
+    opacity: 1;
+    /* display: block; */
+    /* pointer-events: painted; */
+    pointer-events: visible;
+    transform: translateY(0px);
+  }
+
+  @media  screen and (min-width: 701px)  {
+    .aside-icon:hover span {
+        left: 7.3rem;
+    }
+  }
+
+  @media  screen and (min-width: 551px) and (max-width: 700px)  {
+    .aside-icon:hover span {
+        left: 6.3rem;
+    }
+  }
+  
+  @media  screen and (min-width: 451px) and (max-width: 550px)  {
+    .aside-icon:hover span {
+        left: 5rem;
+    }
+  }
+
+  @media  screen and (min-width: 300px) and (max-width: 450px)  {
+    .aside-icon:hover span {
+        left: 4rem;
+    }
   }

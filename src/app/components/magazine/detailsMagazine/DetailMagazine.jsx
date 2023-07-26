@@ -1,66 +1,80 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import ImageCardMagazine from "../../../../../public/assets/images/magazine/magazine_details.svg";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+// Fetch Data
+import axios from "axios";
+import useSWR from "swr";
+// Token
+import { getToken } from "@/app/lib/localStorage";
 
 function DetailMagazine() {
-  const [cardsMagazine, setCardsMagazine] = useState([
-    {
-      id: 1,
-      image: ImageCardMagazine,
-      title: "HCP new insert item",
-      date: new Date(),
-      description:
-        "There are many variations of passages of Lorem Ipsum available",
-    },
-    {
-      id: 2,
-      image: ImageCardMagazine,
-      title: "HCP new insert item",
-      date: new Date(),
-      description:
-        "There are many variations of passages of Lorem Ipsum available",
-    },
-    {
-      id: 3,
-      image: ImageCardMagazine,
-      title: "HCP new insert item",
-      date: new Date(),
-      description:
-        "There are many variations of passages of Lorem Ipsum available",
-    },
-  ]);
+  const token = getToken();
+  const idParams = useSearchParams().get("id");
 
-  const queryPathName = usePathname().split(`/`)[2];
-
-  useEffect(() => {
-    if (queryPathName) {
-      setCardsMagazine((prev) => prev.find((item) => item.id == queryPathName));
+  const fetcher = async (url) => {
+    try {
+      const { data } = await axios({
+        url: url,
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return data;
+    } catch (err) {
+      console.log(err.message);
+      return err;
     }
-  }, [queryPathName]);
+  };
+
+  const {
+    isLoading,
+    data: magazineDetails,
+    error,
+  } = useSWR(
+    `${process.env.NEXT_PUBLIC_URL_BD}/api/magazine/show/${idParams}`,
+    fetcher
+  );
+
+  const currentMagazine =
+    magazineDetails &&
+    Array.isArray(magazineDetails) &&
+    magazineDetails.find((item) => item.id === Number(idParams));
+
+  console.log(currentMagazine);
 
   return (
     <>
-      {cardsMagazine && Array.isArray(cardsMagazine) !== true ? (
-              <div className="w-full">
-                  <div className="mb-8">
-                      <Link href={`/magazine`} className="text-semibold text-primary-text transition-colors hover:text-primary-blue">Go To Magazine</Link>
-                  </div>
-          <div className="w-fullflex items-center justify-center">
+      {magazineDetails ? (
+        <div className="w-full">
+          <div className="mb-8">
+            <Link
+              href={`/magazine`}
+              className="text-semibold text-primary-text transition-colors hover:text-primary-blue"
+            >
+              Go To Magazine
+            </Link>
+          </div>
+          <div className="w-full flex items-center justify-center">
             <Image
-              src={cardsMagazine.image}
-              alt={cardsMagazine.title}
+              src={currentMagazine.image}
+              alt={currentMagazine.title}
               height={261}
               width={200}
-              className=" w-[70%] mx-auto"
+              className=" w-[70%] h-[400px] mx-auto"
             />
           </div>
           <div className="flex flex-col items-center justify-center gap-8 mt-16 text-center font-normal md:font-medium">
-            <p className="text-lg sm:text-xl md:text-2xl">{cardsMagazine.title}</p>
-            <p>author</p>
-            <p className="text-text-light text-base sm:text-lg">{cardsMagazine.description}</p>
+            <p className="text-lg sm:text-xl md:text-2xl">
+              {currentMagazine.title}
+            </p>
+            <p>{currentMagazine.author}</p>
+            <p className="text-text-light text-base sm:text-lg">
+              {currentMagazine.description}
+            </p>
+            <p>{currentMagazine.datesend}</p>
           </div>
         </div>
       ) : (
@@ -70,7 +84,6 @@ function DetailMagazine() {
         </div>
       )}
     </>
-    //   <div></div>
   );
 }
 

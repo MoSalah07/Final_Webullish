@@ -1,15 +1,24 @@
-'use client';
-import React, {useState} from 'react';
+"use client";
+import React, { useState } from "react";
 // Components
-import CreateLive from '@/app/components/live/CreateLive';
+import CreateLive from "@/app/components/live/CreateLive";
+import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
+import LiveContent from "@/app/components/live/LiveContent";
 
 function Live() {
   const [isCreated, setIsCreated] = useState(false);
   return (
     <div>
-      <CreateLive setIsCreated={setIsCreated} />
+      {isCreated ? (
+        <CreateLive setIsCreated={setIsCreated} />
+      ) : (
+        <>
+            <DynamicToolBar title={`All Live`} setIsCreated={setIsCreated} />
+            <LiveContent />
+        </>
+      )}
     </div>
-  )
+  );
 }
 
 export default Live;

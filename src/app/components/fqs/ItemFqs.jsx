@@ -2,15 +2,38 @@
 import Image from "next/image";
 import React from "react";
 import { Collapse } from "react-collapse";
+// Fetch Data
+import axios from "axios";
+import {mutate} from 'swr';
+// Token
+import { getToken } from "@/app/lib/localStorage";
 
-function ItemFqs({ title, desc, open, toggle }) {
+function ItemFqs({ question, answer, open, toggle, id }) {
+  const token = getToken();
+
+  const handleDeleteFqs = async (e, id) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios({
+        url: `${process.env.NEXT_PUBLIC_URL_BD}/api/faq/delete/${id}`,
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+      mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/faq/show_all`, true);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
   return (
     <div className="pt-3 mb-4">
       <div
         onClick={toggle}
         className="bg-primary-yellow text-primary-white py-2 px-6 flex justify-between items-center cursor-pointer rounded-primary-rounded"
       >
-        <p className="text-base font-bold tracking-wider">{title}</p>
+        <p className="text-base font-bold tracking-wider">{question}</p>
         <div className="text-3xl">
           {open ? (
             <Image
@@ -35,13 +58,13 @@ function ItemFqs({ title, desc, open, toggle }) {
       </div>
       <Collapse isOpened={open}>
         <div className="bg-secondary-dark text-primary-white px-6 py-4 rounded-primary-rounded">
-          {desc}
+          {answer}
         </div>
         <div className="flex justify-end items-center gap-8 bg-primary-white p-4 rounded-primary-rounded">
           <button className="bg-primary-white text-primary-btn border border-primary-btn px-6 py-[2px] text-sm rounded-primary-rounded capitalize">
             update
           </button>
-          <button className="bg-primary-red text-primary-white px-6 py-1 rounded-primary-rounded text-sm capitalize">
+          <button onClick={(e) => handleDeleteFqs(e, id)} className="bg-primary-red text-primary-white px-6 py-1 rounded-primary-rounded text-sm capitalize">
             delete
           </button>
         </div>

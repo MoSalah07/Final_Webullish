@@ -3,7 +3,7 @@ import React from "react";
 import DynamicHeadingContent from "../../utils/DynamicHeadingContent";
 import CardsMagazine from "./CardsMagazine";
 
-function MainMagazine() {
+function MainMagazine({magazineArr}) {
   return (
     <div>
       <DynamicHeadingContent
@@ -11,7 +11,7 @@ function MainMagazine() {
         title="Meet the Webullish blog"
         description="See all recently published articles"
           />
-          <CardsMagazine />
+      <CardsMagazine magazineArr={magazineArr} />
     </div>
   );
 }
