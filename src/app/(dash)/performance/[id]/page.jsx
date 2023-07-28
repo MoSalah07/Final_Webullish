@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 // Components;
 import PerformanceDetailsTable from "@/app/components/performance/performanceDetails/PerformanceDetailsTable";
@@ -53,7 +54,12 @@ function PerformanceResult() {
 
   return (
     <div>
-      <Link className="my-8 block font-semibold text-lg hover:text-primary-blue transition-colors" href={`/performance`}>Go To Performance Page</Link>
+      <Link
+        className="my-8 block font-semibold text-lg hover:text-primary-blue transition-colors"
+        href={`/performance`}
+      >
+        Go To Performance Page
+      </Link>
       <div className="mb-12">
         <h3 className="font-semibold capitalize">january performance</h3>
       </div>

@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 // Components
 import DetailMagazine from "@/app/components/magazine/detailsMagazine/DetailMagazine";
