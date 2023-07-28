@@ -30,7 +30,7 @@ function ListITem({ iconName, iconSrc = "" }) {
           priority
           className="text-white"
         />
-        <p className="hidden lg:block"> {iconName}</p>
+        <p className="hidden lg:block text-sm xl:text-lg"> {iconName}</p>
         <span className="absolute left-14 xs:left-22 lg:left-24 z-50 block md:hidden bg-primary-blue text-white p-2 rounded-primary-rounded transition-all opacity-0 translate-y-5 duration-500">{iconName}</span>
       </Link>
     </li>
