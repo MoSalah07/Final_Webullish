@@ -3,16 +3,15 @@ import React, { useState } from "react";
 import UploadImage from "../team/teamCreate/UploadImage";
 // Fetch
 import axios from "axios";
+import { mutate } from "swr";
 // Token
 import { getToken } from "@/app/lib/localStorage";
 // Validation
 import { useForm } from "react-hook-form";
-import UploadVideo from "../utils/UploadVideo";
+// Alerts
+import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
 
 function CreateAdvertisment({ setIsCreated }) {
-  // const [imageVal, setImageVal] = useState("");
-  // const [videoVal, setVideoVal] = useState("");
-  // const [inputsEmpty, setInputsEmpty] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
   const token = getToken();
 
@@ -20,12 +19,8 @@ function CreateAdvertisment({ setIsCreated }) {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
-
-
-
-
-
 
   const handleCreateAdvertisment = async ({ name, description, image }) => {
     try {
@@ -36,21 +31,22 @@ function CreateAdvertisment({ setIsCreated }) {
         data: {
           name,
           description,
-          image: image,
-          // video: videoVal,
+          video: image,
         },
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log(data);
+      reset();
+      toastifySuccess("Added successfully");
+      mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/advertisement/show_all`);
       setIsDisabled(false);
-  } catch (err) {
-      console.log(err.message);
+      setIsCreated(false);
+    } catch (err) {
+      toastifyError(err.message);
       setIsDisabled(false);
     }
     setIsDisabled(false);
-    // setVideoVal('');
   };
 
   return (
@@ -67,13 +63,6 @@ function CreateAdvertisment({ setIsCreated }) {
               errors={errors}
             />
           </div>
-          {/* <div className="my-8">
-            <UploadVideo
-              title="Video"
-              videoVal={videoVal}
-              setVideoVal={setVideoVal}
-            />
-          </div> */}
           <div className="flex flex-col justify-center gap-2 mb-2">
             <label className="capitalize font-medium" htmlFor="name">
               Name
@@ -102,8 +91,8 @@ function CreateAdvertisment({ setIsCreated }) {
                 required: "Please Enter Description",
               })}
             ></textarea>
-            {errors.name && (
-              <div className="text-red-500">{errors.name.message}</div>
+            {errors.description && (
+              <div className="text-red-500">{errors.description.message}</div>
             )}
           </div>
           <div className="flex sm:items-center flex-col justify-center gap-6 sm:gap-0 sm:flex-row sm:justify-between mt-12">

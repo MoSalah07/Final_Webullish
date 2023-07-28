@@ -32,9 +32,12 @@ function Advertisement() {
     isLoading,
     data: advertisementArr,
     error,
-  } = useSWR(`https://webullish.space/api/advertisement/show_all`, fetcher);
+  } = useSWR(
+    `${process.env.NEXT_PUBLIC_URL_BD}/api/advertisement/show_all`,
+    fetcher
+  );
 
-  if (isLoading) return <div>Loading ...</div>
+  if (isLoading) return <div>Loading ...</div>;
 
   return (
     <div>

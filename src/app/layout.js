@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.className}`}>
-        {isLoading && <ToastContainer limit={1} /> }
+        {isLoading && <ToastContainer limit={1} position="bottom-center" autoClose={1000} />}
         {children}
       </body>
     </html>

@@ -4,9 +4,11 @@ import React from "react";
 import { Collapse } from "react-collapse";
 // Fetch Data
 import axios from "axios";
-import {mutate} from 'swr';
+import { mutate } from "swr";
 // Token
 import { getToken } from "@/app/lib/localStorage";
+// Alerts
+import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
 
 function ItemFqs({ question, answer, open, toggle, id }) {
   const token = getToken();
@@ -16,16 +18,17 @@ function ItemFqs({ question, answer, open, toggle, id }) {
     try {
       const { data } = await axios({
         url: `${process.env.NEXT_PUBLIC_URL_BD}/api/faq/delete/${id}`,
-        method: 'POST',
+        method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
-        }
+        },
       });
+      toastifySuccess("Deleted successfully");
       mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/faq/show_all`, true);
     } catch (err) {
-      console.log(err.message);
+      toastifyError(err.message);
     }
-  }
+  };
 
   return (
     <div className="pt-3 mb-4">
@@ -64,7 +67,10 @@ function ItemFqs({ question, answer, open, toggle, id }) {
           <button className="bg-primary-white text-primary-btn border border-primary-btn px-6 py-[2px] text-sm rounded-primary-rounded capitalize">
             update
           </button>
-          <button onClick={(e) => handleDeleteFqs(e, id)} className="bg-primary-red text-primary-white px-6 py-1 rounded-primary-rounded text-sm capitalize">
+          <button
+            onClick={(e) => handleDeleteFqs(e, id)}
+            className="bg-primary-red text-primary-white px-6 py-1 rounded-primary-rounded text-sm capitalize"
+          >
             delete
           </button>
         </div>

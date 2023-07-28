@@ -7,9 +7,11 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 // Use_Form_Validation
 import { useForm } from "react-hook-form";
+// Alerts
+import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
 
 function LoginForm() {
-  const refPassword = useRef();
+  const refPassword = useRef(undefined);
 
   const [loading, setLoading] = useState(false);
 
@@ -41,11 +43,12 @@ function LoginForm() {
           password,
         }
       );
+      toastifySuccess('Logged in successfully');
       localStorage.setItem("token", JSON.stringify(data.access_token));
       localStorage.setItem("token_type", JSON.stringify(data.token_type));
       push("/dashboard");
     } catch (err) {
-      console.log(err);
+      toastifyError(err.message);
       setLoading(false);
     }
     setLoading(false);
@@ -76,7 +79,7 @@ function LoginForm() {
               message: "Please enter valid email",
             },
           })}
-          // onChange={getValues}
+  
         />
         {errors.email && (
           <div className="text-red-500">{errors.email.message}</div>
@@ -91,11 +94,11 @@ function LoginForm() {
         </label>
         <input
           className={`w-full p-3 border-none outline-primary-blue bg-secondary-white placeholder:text-sm placeholder:text-text-light`}
+          ref={refPassword}
           name="password"
           type="password"
           placeholder="Enter Your Password"
           id="password"
-          ref={refPassword}
           {...register("password", {
             required: "Please Enter Password",
             minLength: {
@@ -103,6 +106,7 @@ function LoginForm() {
               message: "Password is more than 5 chars",
             },
           })}
+
           // onChange={getValues}
         />
         {errors.password && (

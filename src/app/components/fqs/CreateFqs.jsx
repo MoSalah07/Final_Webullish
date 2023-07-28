@@ -4,9 +4,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 // Fetch Data
 import axios from "axios";
-import {mutate} from 'swr';
+import { mutate } from "swr";
 // Token
 import { getToken } from "@/app/lib/localStorage";
+// Alerts
+import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
 
 function CreateFqs({ setIsCreated }) {
   const {
@@ -31,11 +33,12 @@ function CreateFqs({ setIsCreated }) {
           Authorization: `Bearer ${token}`,
         },
       });
+      toastifySuccess("Added successfully");
       mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/faq/show_all`, true);
       reset();
-      setIsCreated(false)
+      setIsCreated(false);
     } catch (err) {
-      console.log(err.message);
+      toastifyError(err.message);
     }
   };
 

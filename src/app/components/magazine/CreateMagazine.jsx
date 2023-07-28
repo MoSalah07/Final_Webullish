@@ -9,6 +9,8 @@ import { mutate } from "swr";
 import { useForm } from "react-hook-form";
 // token
 import { getToken } from "@/app/lib/localStorage";
+// Alerts
+import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
 
 function CreateMagazine({ setIsCreated }) {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -52,10 +54,11 @@ function CreateMagazine({ setIsCreated }) {
         },
       });
       setIsDisabled(false);
+      toastifySuccess('Added successfully');
       mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/magazine/show_all`, true);
       reset();
     } catch (err) {
-      console.log(err.message);
+      toastifyError(err.message);
       setIsDisabled(false);
     }
     setIsDisabled(false);

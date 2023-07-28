@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 // Components
 import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
 import PerformanceContent from "../../components/performance/PerformanceContent";
@@ -31,22 +31,8 @@ function Performance() {
 
   const { isLoading, data: performanceArr, error } = useSWR(`https://webullish.space/api/performance/show_all/1`, fetcher);
   
-  console.log(performanceArr)
+  // console.log(performanceArr)
 
-
-  // useEffect(() => {
-  //   const handlePerformance = async () => {
-  //     const { data } = await axios.get(`https://webullish.space/api/performance/show_all/1`, {
-  //       headers: {
-  //       Authorization:  `Bearer ${token}`,
-  //       }
-  //     });
-      
-  //     console.log(data);
-  //   }
-    
-  //   handlePerformance();
-  // }, [])
 
 
   return (

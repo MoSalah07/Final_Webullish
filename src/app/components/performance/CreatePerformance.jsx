@@ -1,6 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+// Validation
+import { useForm } from "react-hook-form";
+// Fetch
+import axios from "axios";
+import { mutate } from "swr";
+// Token
+import { getToken } from "@/app/lib/localStorage";
+// Alerts
+import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
 
 function CreatePerformance({ setIsCreated }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const token = getToken();
+
+  const handleCreatePerformance = async ({
+    month,
+    symbol,
+    target,
+    reached,
+    comment,
+  }) => {
+    try {
+      const { data } = await axios({
+        url: `${process.env.NEXT_PUBLIC_URL_BD}/api/performance/save`,
+        method: "POST",
+        data: {
+          sympol: symbol,
+          target,
+          reached,
+          comment,
+          month_id: month,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      reset();
+      toastifySuccess("Added successfully");
+      mutate(
+        `${process.env.NEXT_PUBLIC_URL_BD}/api/performance/show_all`,
+        true
+      );
+      setIsCreated(false);
+    } catch (err) {
+      toastifyError(err.message);
+    }
+  };
+
   return (
     <div>
       <div className="mb-8">
@@ -8,11 +60,13 @@ function CreatePerformance({ setIsCreated }) {
           add new performance
         </h3>
       </div>
-      <form>
-        <h5 className="mb-5 capitalize text-base font-semibold">add new performance</h5>
-        <div className="flex flex-col justify-center gap-2 mb-2">
+      <form onSubmit={handleSubmit(handleCreatePerformance)}>
+        <h5 className="mb-5 capitalize text-base font-semibold">
+          add new performance
+        </h5>
+        <div className="flex flex-col justify-center gap-2 mb-3">
           <label className="capitalize font-medium" htmlFor="sympol">
-            sympol
+            symbol
           </label>
           <input
             className={`py-2 outline-primary-btn rounded-primary-rounded px-4
@@ -21,48 +75,64 @@ function CreatePerformance({ setIsCreated }) {
             name="sympol"
             type="text"
             placeholder="sympol"
+            {...register("symbol", { required: "Please Enter Symbol" })}
           />
+          {errors.symbol && (
+            <div className="text-red-500">{errors.symbol.message}</div>
+          )}
         </div>
-        <div className="flex flex-col justify-center gap-2 mb-2">
+        <div className="flex flex-col justify-center gap-2 mb-3">
           <label className="capitalize font-medium" htmlFor="target">
             target
           </label>
           <input
             className={`py-2 outline-primary-btn rounded-primary-rounded px-4
-          placeholder:text-sm`}
+          placeholder:text-sm [&::-webkit-inner-spin-button]:appearance-none`}
             id="target"
             name="target"
-            type="text"
+            type="number"
             placeholder="target"
+            {...register("target", { required: "Please Enter Target" })}
           />
+          {errors.target && (
+            <div className="text-red-500">{errors.target.message}</div>
+          )}
         </div>
-        <div className="flex flex-col justify-center gap-2 mb-2">
+        <div className="flex flex-col justify-center gap-2 mb-3">
           <label className="capitalize font-medium" htmlFor="reached">
             reached
           </label>
           <input
             className={`py-2 outline-primary-btn rounded-primary-rounded px-4
-          placeholder:text-sm`}
+          placeholder:text-sm [&::-webkit-inner-spin-button]:appearance-none`}
             id="reached"
             name="reached"
-            type="text"
+            type="number"
             placeholder="reached%"
+            {...register("reached", { required: "Please Enter Reached" })}
           />
+          {errors.reached && (
+            <div className="text-red-500">{errors.reached.message}</div>
+          )}
         </div>
-        <div className="flex flex-col justify-center gap-2 mb-2">
+        <div className="flex flex-col justify-center gap-2 mb-3">
           <label className="capitalize font-medium" htmlFor="comment">
             comment
           </label>
           <input
             className={`py-2 outline-primary-btn rounded-primary-rounded px-4
-          placeholder:text-sm`}
+          placeholder:text-sm [&::-webkit-inner-spin-button]:appearance-none`}
             id="comment"
             name="comment"
-            type="text"
+            type="number"
             placeholder="comment"
+            {...register("comment", { required: "Please Enter Comment" })}
           />
+          {errors.comment && (
+            <div className="text-red-500">{errors.comment.message}</div>
+          )}
         </div>
-        <div className="flex flex-col justify-center gap-2 mb-2">
+        <div className="flex flex-col justify-center gap-2 mb-3">
           <label className="capitalize font-medium" htmlFor="month">
             month
           </label>
@@ -72,21 +142,25 @@ function CreatePerformance({ setIsCreated }) {
             id="month"
             name="month"
             type="text"
+            {...register("month", { required: "Please Select Month" })}
           >
-            <option>Choose Month</option>
-            <option value={`january`}>january</option>
-            <option value={`february`}>february</option>
-            <option value={`march`}>march</option>
-            <option value={`april`}>april</option>
-            <option value={`may`}>may</option>
-            <option value={`june`}>june</option>
-            <option value={`july`}>july</option>
-            <option value={`august`}>august</option>
-            <option value={`september`}>september</option>
-            <option value={`october`}>october</option>
-            <option value={`november`}>november</option>
-            <option value={`december`}>december</option>
+            <option value={``}>Choose Month</option>
+            <option value={`1`}>january</option>
+            <option value={`2`}>february</option>
+            <option value={`3`}>march</option>
+            <option value={`4`}>april</option>
+            <option value={`5`}>may</option>
+            <option value={`6`}>june</option>
+            <option value={`7`}>july</option>
+            <option value={`8`}>august</option>
+            <option value={`9`}>september</option>
+            <option value={`10`}>october</option>
+            <option value={`11`}>november</option>
+            <option value={`12`}>december</option>
           </select>
+          {errors.month && (
+            <div className="text-red-500">{errors.month.message}</div>
+          )}
         </div>
         <div className="flex sm:items-center flex-col justify-center gap-6 sm:gap-0 sm:flex-row sm:justify-between mt-12">
           <button

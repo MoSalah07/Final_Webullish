@@ -7,7 +7,7 @@ export default function LoginScreen() {
   return (
     <>
       <title>Login Page</title>
-      <section className="bg-primary-white">
+      <section className="bg-primary-white relative">
         <Login />
       </section>
     </>

@@ -5,11 +5,13 @@ import TeamContent from "@/app/components/team/TeamContent";
 import TeamHeader from "@/app/components/team/TeamHeader";
 import TeamCreate from "@/app/components/team/teamCreate/TeamCreate";
 import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
+import Loading from "@/app/components/loading/Loading";
 // Fetch Data
 import axios from "axios";
 import useSWR from 'swr';
 // Token
 import { getToken } from "@/app/lib/localStorage";
+
 
 function Team() {
   const [isCreated, setIsCreated] = useState(false);
@@ -34,7 +36,7 @@ function Team() {
   const { isLoading, data: teamArr, error } = useSWR(`${process.env.NEXT_PUBLIC_URL_BD}/api/team/show_all`, fetcher);
   
 
-  if (isLoading) return <div>Loading ....</div>
+  if (isLoading) return <Loading />
 
 
   return (
