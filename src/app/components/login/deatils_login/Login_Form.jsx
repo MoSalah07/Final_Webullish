@@ -25,10 +25,12 @@ function LoginForm() {
 
   const handleIconPassword = () => {
     if (refPassword && typeof refPassword.current !== "undefined") {
-      if (refPassword.current.type === "password") {
-        refPassword.current.type = "text";
+      if (refPassword?.current.parentElement.children[1].type === "password") {
+        // refPassword.current.type = "text";
+        refPassword.current.parentElement.children[1].type = "text";
       } else {
-        refPassword.current.type = "password";
+        // refPassword.current.type = "password";
+        refPassword.current.parentElement.children[1].type = "password";
       }
     }
   };
@@ -43,7 +45,7 @@ function LoginForm() {
           password,
         }
       );
-      toastifySuccess('Logged in successfully');
+      toastifySuccess("Logged in successfully");
       localStorage.setItem("token", JSON.stringify(data.access_token));
       localStorage.setItem("token_type", JSON.stringify(data.token_type));
       push("/dashboard");
@@ -79,7 +81,6 @@ function LoginForm() {
               message: "Please enter valid email",
             },
           })}
-  
         />
         {errors.email && (
           <div className="text-red-500">{errors.email.message}</div>
@@ -87,6 +88,7 @@ function LoginForm() {
       </div>
       <div className="flex flex-col justify-center gap-2 relative">
         <label
+          ref={refPassword}
           className="capitalize text-primary-text text-base sm:text-xl"
           htmlFor="password"
         >
@@ -94,7 +96,6 @@ function LoginForm() {
         </label>
         <input
           className={`w-full p-3 border-none outline-primary-blue bg-secondary-white placeholder:text-sm placeholder:text-text-light`}
-          ref={refPassword}
           name="password"
           type="password"
           placeholder="Enter Your Password"
@@ -106,14 +107,17 @@ function LoginForm() {
               message: "Password is more than 5 chars",
             },
           })}
-
-          // onChange={getValues}
         />
         {errors.password && (
           <div className="text-red-500">{errors.password.message}</div>
         )}
         <Image
-          className="absolute top-[50%] right-4 translate-y-1/4 hover:cursor-pointer z-50"
+          style={{
+            transform: errors.password ? "translateY(-40%)" : "translateY(25%)",
+          }}
+          className={`absolute top-[50%] right-4 ${
+            errors.password ? "translate-y-[-40%]" : "translate-y-1/4"
+          }  hover:cursor-pointer z-50`}
           src={`/assets/images/login/eyeslash.svg`}
           alt="icon-password"
           height={24}

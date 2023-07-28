@@ -1,7 +1,5 @@
 import React from "react";
 // Components
-import DynamicForm from "./DynamicForm";
-
 import CreateYoutube from "./createComponents/CreateYoutube";
 import CreateFacebook from "./createComponents/CreateFacebook";
 import CreateInstagram from "./createComponents/CreateInstagram";
