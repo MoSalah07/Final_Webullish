@@ -36,8 +36,8 @@ function ItemFqs({ question, answer, open, toggle, id }) {
         onClick={toggle}
         className="bg-primary-yellow text-primary-white py-2 px-6 flex justify-between items-center cursor-pointer rounded-primary-rounded"
       >
-        <p className="text-base font-bold tracking-wider">{question}</p>
-        <div className="text-3xl">
+        <p className="text-base font-bold tracking-wider basis-[87%] text-justify">{question}</p>
+        <div className="text-3xl basis-[10%] flex items-center justify-center">
           {open ? (
             <Image
               src={`/assets/images/fqs/open.svg`}

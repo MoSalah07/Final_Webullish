@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
 /*================================= Login ======================================================================== */
 
 .section_background_Login {
@@ -30,8 +26,6 @@
 
   .aside-icon:hover span {
     opacity: 1;
-    /* display: block; */
-    /* pointer-events: painted; */
     pointer-events: visible;
     transform: translateY(0px);
   }

@@ -1,4 +1,3 @@
-
 // Global Style Css
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,6 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Poppins } from "next/font/google";
 // Toastify
 import ToastifyContainerLayout from "./components/toastify/ToastifyContainer";
+// Theme
+import ProviderTheme from "./providers";
 // Google Fonts
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,7 +19,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
       <body className={`${poppins.className}`}>
