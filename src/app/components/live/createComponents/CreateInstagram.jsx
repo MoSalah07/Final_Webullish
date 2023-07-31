@@ -86,6 +86,10 @@ placeholder:text-sm`}
             placeholder={`Description Instagram`}
             {...register("descriptionInstagram", {
               required: "Please Enter Description Instagram",
+              minLength: {
+                value: 8,
+                message: "Password is more than 7 chars",
+              },
             })}
           />
           {errors.descriptionInstagram && (

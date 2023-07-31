@@ -21,10 +21,13 @@ function CreateLinkedin({ setIsCreated }) {
   // Token
   const token = getToken();
 
-  const handleCreateLinkedin = async ({ linkLinkedin, descriptionLinkedin}) => {
+  const handleCreateLinkedin = async ({
+    linkLinkedin,
+    descriptionLinkedin,
+  }) => {
     try {
       const { data } = await axios({
-        url: `${process.env.NEXT_PUBLIC_URL_BD}/api/livefacebook/save`,
+        url: `${process.env.NEXT_PUBLIC_URL_BD}/api/livelinkedin/save`,
         method: "POST",
         data: {
           description: descriptionLinkedin,
@@ -36,7 +39,10 @@ function CreateLinkedin({ setIsCreated }) {
       });
       reset();
       toastifySuccess("Added Linkedin successfully");
-      mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/livelinkedin/show_all`, true);
+      mutate(
+        `${process.env.NEXT_PUBLIC_URL_BD}/api/livelinkedin/show_all`,
+        true
+      );
     } catch (err) {
       toastifyError(err.message);
     }
@@ -80,6 +86,10 @@ placeholder:text-sm`}
             placeholder={`Description Twitter`}
             {...register("descriptionLinkedin", {
               required: "Please Enter Description Linkedin",
+              minLength: {
+                value: 8,
+                message: "Password is more than 7 chars",
+              },
             })}
           />
           {errors.descriptionLinkedin && (

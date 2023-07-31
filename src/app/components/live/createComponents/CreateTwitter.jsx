@@ -83,6 +83,10 @@ placeholder:text-sm`}
             placeholder={`Description Twitter`}
             {...register("descriptionTwitter", {
               required: "Please Enter Description Twitter",
+              minLength: {
+                value: 8,
+                message: "Password is more than 7 chars",
+              },
             })}
           />
           {errors.descriptionTwitter && (

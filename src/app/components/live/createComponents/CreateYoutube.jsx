@@ -36,7 +36,10 @@ function CreateYoutube({ setIsCreated }) {
       });
       reset();
       toastifySuccess("Added Youtube successfully");
-      mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/liveyoutube/show_all`);
+      mutate(
+        `${process.env.NEXT_PUBLIC_URL_BD}/api/liveyoutube/show_all`,
+        true
+      );
     } catch (err) {
       toastifyError(err.message);
     }
@@ -80,6 +83,10 @@ placeholder:text-sm`}
             placeholder={`Description Youtube`}
             {...register("descriptionYoutube", {
               required: "Please Enter Description Youtube",
+              minLength: {
+                value: 8,
+                message: "Password is more than 7 chars",
+              },
             })}
           />
           {errors.descriptionYoutube && (

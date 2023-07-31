@@ -13,8 +13,8 @@ function Live() {
         <CreateLive setIsCreated={setIsCreated} />
       ) : (
         <>
-            <DynamicToolBar title={`All Live`} setIsCreated={setIsCreated} />
-            <LiveContent />
+          <DynamicToolBar title={`All Live`} setIsCreated={setIsCreated} />
+          <LiveContent />
         </>
       )}
     </div>

@@ -83,6 +83,10 @@ placeholder:text-sm`}
             placeholder={`Description Facebook`}
             {...register("descriptionFacebook", {
               required: "Please Enter Description Facebook",
+              minLength: {
+                value: 8,
+                message: "Password is more than 7 chars",
+              },
             })}
           />
           {errors.descriptionFacebook && (
