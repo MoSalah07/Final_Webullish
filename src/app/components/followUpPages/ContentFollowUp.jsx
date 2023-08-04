@@ -12,8 +12,6 @@ function ContentFollowUp({ followUpArr }) {
     setOpen(index);
   };
 
-  console.log(followUpArr);
-
   return (
     <div>
       {followUpArr &&

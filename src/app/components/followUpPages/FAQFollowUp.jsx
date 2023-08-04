@@ -13,12 +13,27 @@ function FAQFollowUp({
   open,
   index,
   callBackDelete = () => {},
-  callBackUpdate = false,
+  callBackUpdate = () => {},
+  isUpdate,
+  setIsUpdate,
+  facebookVal,
+  setFacebookVal,
+  twitterVal,
+  setTwitterVal,
+  youtubeVal,
+  setYoutubeVal,
+  instagramVal,
+  setInstagramVal,
+  linkedinVal,
+  setLinkedInVal,
 }) {
   return (
     <div className="pt-3 mb-4">
       <div
-        onClick={toggle}
+        onClick={() => {
+          toggle();
+          !open && setIsUpdate(false);
+        }}
         className="bg-primary-yellow text-primary-white py-2 px-6 flex justify-between items-center cursor-pointer rounded-primary-rounded"
       >
         <p className="text-base font-bold tracking-wider basis-[87%] text-justify">
@@ -52,13 +67,32 @@ function FAQFollowUp({
             <h5 className="text-primary-yellow font-semibold text-lg mb-2">
               follow up facebook
             </h5>
-            <span>{facebook}</span>
+            {isUpdate ? (
+              <input
+                className={`text-black font-semibold outline-none p-2`}
+                type="text"
+                value={facebookVal}
+                onChange={(e) => setFacebookVal(e.target.value)}
+              />
+            ) : (
+              <span>{facebook}</span>
+            )}
+            {/* <span>{facebook}</span> */}
           </div>
           <div className="mb-4 capitalize">
             <h5 className="text-primary-yellow font-semibold text-lg mb-2">
               follow up twitter
             </h5>
-            <span>{twitter}</span>
+            {isUpdate ? (
+              <input
+                className={`text-black font-semibold outline-none p-2`}
+                type="text"
+                value={twitterVal}
+                onChange={(e) => setTwitterVal(e.target.value)}
+              />
+            ) : (
+              <span>{twitter}</span>
+            )}
           </div>
           {linkedin && (
             <div className="mb-4 capitalize">
@@ -82,15 +116,49 @@ function FAQFollowUp({
           </div>
         </div>
         <div className="flex justify-end items-center gap-8 bg-primary-white p-4 rounded-primary-rounded">
-          <button className="bg-primary-white text-primary-btn border border-primary-btn px-6 py-[2px] text-sm rounded-primary-rounded capitalize">
-            update
-          </button>
-          <button
-            onClick={(e) => callBackDelete(e, id)}
-            className="bg-primary-red text-primary-white px-6 py-1 rounded-primary-rounded text-sm capitalize"
-          >
-            delete
-          </button>
+          {isUpdate ? (
+            <>
+              <button
+                onClick={(e) => {
+                  callBackUpdate(e, id);
+                }}
+                className="bg-primary-white text-primary-btn border border-primary-btn px-6 py-[2px] text-sm rounded-primary-rounded capitalize"
+              >
+                Done
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={(e) => {
+                  setIsUpdate(true);
+                }}
+                className="bg-primary-white text-primary-btn border border-primary-btn px-6 py-[2px] text-sm rounded-primary-rounded capitalize"
+              >
+                update
+              </button>
+            </>
+          )}
+
+          {isUpdate ? (
+            <>
+              <button
+                onClick={() => setIsUpdate(false)}
+                className="bg-primary-red text-primary-white px-6 py-1 rounded-primary-rounded text-sm capitalize"
+              >
+                cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={(e) => callBackDelete(e, id)}
+                className="bg-primary-red text-primary-white px-6 py-1 rounded-primary-rounded text-sm capitalize"
+              >
+                delete
+              </button>
+            </>
+          )}
         </div>
       </Collapse>
     </div>

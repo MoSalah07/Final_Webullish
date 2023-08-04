@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // Components
 import FAQFollowUp from "./FAQFollowUp";
 // Fetch Data
@@ -22,6 +22,13 @@ function CardFollowUp({
 }) {
   const token = getToken();
 
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [facebookVal, setFacebookVal] = useState(facebook || "");
+  const [twitterVal, setTwitterVal] = useState(twitter || "");
+  const [youtubeVal, setYoutubeVal] = useState(youtube || "");
+  const [instagramVal, setInstagramVal] = useState(instagram || "");
+  const [linkedinVal, setLinkedInVal] = useState(linkedin || "");
+
   const providerFQS = {
     facebook,
     instagram,
@@ -31,8 +38,21 @@ function CardFollowUp({
     toggle,
     id,
     open,
+    isUpdate,
+    setIsUpdate,
+    facebookVal,
+    setFacebookVal,
+    twitterVal,
+    setTwitterVal,
+    youtubeVal,
+    setYoutubeVal,
+    instagramVal,
+    setInstagramVal,
+    linkedinVal,
+    setLinkedInVal,
   };
 
+  // Delete
   const handleDeleteFqsFollow = async (e, id) => {
     e.preventDefault();
     try {
@@ -53,11 +73,27 @@ function CardFollowUp({
     }
   };
 
+  // Update
+  const handelUpdateFqsFollow = async (e, id) => {
+    try {
+      // const { data } = await axios({
+      //   url: `${process.env.NEXT_PUBLIC_URL_BD}/api/FollowUpPages/delete/${id}`,
+      //   method: "POST",
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // });
+    } catch (err) {
+      toastifyError(err.message);
+    }
+  };
+
   return (
     <>
       <FAQFollowUp
         {...providerFQS}
         callBackDelete={handleDeleteFqsFollow}
+        callBackUpdate={handelUpdateFqsFollow}
         index={index}
       />
     </>

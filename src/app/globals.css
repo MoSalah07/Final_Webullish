@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/*=================================================== Toolbar ==================================================== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #149FF3;
+  border-radius: 6px; 
+  transition: all .3s ease-in-out;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #5C73DB;
+}
+
 /*================================= Login ======================================================================== */
 
 .section_background_Login {
