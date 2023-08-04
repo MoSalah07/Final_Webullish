@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Loading from "@/app/components/loading/Loading";
 import CreateFollowUp from "@/app/components/followUpPages/CreateFollowUp";
 import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
+import ContentFollowUp from "@/app/components/followUpPages/ContentFollowUp";
 // Fetch Data
 import axios from "axios";
 import useSWR from "swr";
@@ -38,8 +39,6 @@ function FollowUpPagesScreen() {
     fetcher
   );
 
-  console.log(followUpArr);
-
   if (isLoading) return <Loading />;
 
   return (
@@ -50,6 +49,7 @@ function FollowUpPagesScreen() {
       ) : (
         <>
           <DynamicToolBar title={`All Follow Up`} setIsCreated={setIsCreated} />
+          <ContentFollowUp followUpArr={followUpArr} />
         </>
       )}
     </>

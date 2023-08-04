@@ -1,6 +1,6 @@
 import React from "react";
-import Image from "next/image";
-import { Collapse } from "react-collapse";
+// Components
+import FAQComponent from "../../utils/FAQComponent";
 // Fetch Data
 import axios from "axios";
 import { mutate } from "swr";
@@ -8,7 +8,6 @@ import { mutate } from "swr";
 import { getToken } from "@/app/lib/localStorage";
 // Alerts
 import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
-import FAQComponent from "../../utils/FAQComponent";
 
 function FeatureCard({ name, description, toggle, id, open }) {
   const token = getToken();

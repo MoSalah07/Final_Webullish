@@ -71,11 +71,6 @@ function AsideList() {
       namePage: "feature",
     },
     {
-      iconName: "socialMediaLive",
-      iconSrc: iconTeam,
-      namePage: "social media live",
-    },
-    {
       iconName: "followUpPages",
       iconSrc: iconTeam,
       namePage: "follow Up Pages",

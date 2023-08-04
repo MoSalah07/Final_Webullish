@@ -32,25 +32,25 @@
 
   @media  screen and (min-width: 701px)  {
     .aside-icon:hover span {
-        left: 7.3rem;
+        left: 9rem;
     }
   }
 
   @media  screen and (min-width: 551px) and (max-width: 700px)  {
     .aside-icon:hover span {
-        left: 6.3rem;
+        left: 7.8rem;
     }
   }
   
   @media  screen and (min-width: 451px) and (max-width: 550px)  {
     .aside-icon:hover span {
-        left: 5rem;
+        left: 6.8rem;
     }
   }
 
   @media  screen and (min-width: 300px) and (max-width: 450px)  {
     .aside-icon:hover span {
-        left: 4rem;
+        left: 5rem;
     }
   }
 
