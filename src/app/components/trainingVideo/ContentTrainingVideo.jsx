@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import TrainingCard from "./TrainingCard";
 
 function ContentTrainingVideo({ trainingVideoArr }) {
@@ -9,10 +9,7 @@ function ContentTrainingVideo({ trainingVideoArr }) {
       return setOpen(null);
     }
     setOpen(index);
-    };
-    
-
-    console.log(trainingVideoArr.map(item => item['video Description']))
+  };
 
   return (
     <div>
