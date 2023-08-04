@@ -4,17 +4,17 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-
-function ListITem({ iconName, iconSrc = "" }) {
+function ListITem({ iconName, iconSrc = "", namePage = "" }) {
   const pathName = usePathname();
   const urlPathName = pathName.split("/")[1];
+
   return (
     <li
       className={`p-1 sm:p-3 rounded-primary-rounded text-text-light w-full
        text-sm lg:text-base capitalize
     ${
       urlPathName === iconName
-        ? "bg-primary-blue text-white font-bold"
+        ? "bg-primary-blue text-white font-semibold"
         : "font-normal"
     }`}
     >
@@ -25,13 +25,17 @@ function ListITem({ iconName, iconSrc = "" }) {
         <Image
           src={iconSrc}
           alt={iconName}
-          height={20}
-          width={20}
+          height={17}
+          width={17}
           priority
           className="text-white"
         />
-        <p className="hidden lg:block text-sm xl:text-lg"> {iconName}</p>
-        <span className="absolute left-14 xs:left-22 lg:left-24 z-50 block md:hidden bg-primary-blue text-white p-2 rounded-primary-rounded transition-all opacity-0 translate-y-5 duration-500">{iconName}</span>
+        <p className="hidden lg:block text-sm xl:text-lg whitespace-nowrap">
+          {namePage}
+        </p>
+        <span className="absolute left-14 xs:left-22 lg:left-24 z-50 block md:hidden whitespace-nowrap bg-primary-blue text-white p-2 rounded-primary-rounded transition-all opacity-0 translate-y-5 duration-500">
+          {namePage}
+        </span>
       </Link>
     </li>
   );

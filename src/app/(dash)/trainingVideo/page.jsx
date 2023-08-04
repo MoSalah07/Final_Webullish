@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
 // Components
-import TeamContent from "@/app/components/team/TeamContent";
-import TeamHeader from "@/app/components/team/TeamHeader";
-import TeamCreate from "@/app/components/team/teamCreate/TeamCreate";
 import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
+import CreateTrainingVideo from "@/app/components/trainingVideo/CreateTrainingVideo";
+import ContentTrainingVideo from "@/app/components/trainingVideo/ContentTrainingVideo";
 import Loading from "@/app/components/loading/Loading";
 // Fetch Data
 import axios from "axios";
@@ -12,7 +11,7 @@ import useSWR from "swr";
 // Token
 import { getToken } from "@/app/lib/localStorage";
 
-function Team() {
+function TrainingVideoScreen() {
   const [isCreated, setIsCreated] = useState(false);
 
   const token = getToken();
@@ -26,32 +25,37 @@ function Team() {
       });
       return data;
     } catch (err) {
-      console.log(err);
-      return err.message;
+      console.log(err.message);
+      return err;
     }
   };
 
   const {
     isLoading,
-    data: teamArr,
+    data: trainingVideoArr,
     error,
-  } = useSWR(`${process.env.NEXT_PUBLIC_URL_BD}/api/team/show_all`, fetcher);
+  } = useSWR(
+    `${process.env.NEXT_PUBLIC_URL_BD}/api/training_video/show_all`,
+    fetcher
+  );
 
   if (isLoading) return <Loading />;
 
   return (
     <div>
       {isCreated ? (
-        <TeamCreate setIsCreated={setIsCreated} />
+        <CreateTrainingVideo setIsCreated={setIsCreated} />
       ) : (
         <>
-          <DynamicToolBar title={`All Team`} setIsCreated={setIsCreated} />
-          <TeamHeader />
-          <TeamContent teamArr={teamArr} />
+          <DynamicToolBar
+            title={`Training Video`}
+            setIsCreated={setIsCreated}
+          />
+            <ContentTrainingVideo trainingVideoArr={trainingVideoArr} />
         </>
       )}
     </div>
   );
 }
 
-export default Team;
+export default TrainingVideoScreen;

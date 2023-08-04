@@ -7,7 +7,7 @@ import Logout from "../../../../../public/assets/images/icons_aside/logout.svg";
 
 function SwitchSetting() {
   return (
-    <div className="w-full h-full flex flex-col justify-end items-center lg:items-start gap-4 capitalize mb-4">
+    <div className="w-full h-full flex flex-col justify-end items-center lg:items-start gap-4 capitalize my-8">
       <Link
         className="flex items-center justify-center gap-2 text-text-light "
         href={`/dashboard`}

@@ -1,8 +1,7 @@
-"use client";
 import React, { useState } from "react";
-import ItemFqs from "./ItemFqs";
+import ItemRecentachievement from "./ItemRecentachievement";
 
-function AllFqs({ fqsArr }) {
+function AllRecentachievement({ recentachievementArr }) {
   const [open, setOpen] = useState(false);
 
   const toggle = (index) => {
@@ -14,10 +13,10 @@ function AllFqs({ fqsArr }) {
 
   return (
     <div>
-      {fqsArr &&
-        Array.isArray(fqsArr) &&
-        fqsArr.map((fqs, index) => (
-          <ItemFqs
+      {recentachievementArr &&
+        Array.isArray(recentachievementArr) &&
+        recentachievementArr.map((fqs, index) => (
+          <ItemRecentachievement
             key={fqs.id}
             {...fqs}
             open={index === open}
@@ -28,4 +27,4 @@ function AllFqs({ fqsArr }) {
   );
 }
 
-export default AllFqs;
+export default AllRecentachievement;

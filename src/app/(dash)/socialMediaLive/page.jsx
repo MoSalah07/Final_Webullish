@@ -1,10 +1,6 @@
 "use client";
 import React, { useState } from "react";
 // Components
-import TeamContent from "@/app/components/team/TeamContent";
-import TeamHeader from "@/app/components/team/TeamHeader";
-import TeamCreate from "@/app/components/team/teamCreate/TeamCreate";
-import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
 import Loading from "@/app/components/loading/Loading";
 // Fetch Data
 import axios from "axios";
@@ -12,9 +8,8 @@ import useSWR from "swr";
 // Token
 import { getToken } from "@/app/lib/localStorage";
 
-function Team() {
+function SocialMediaLiveScreen() {
   const [isCreated, setIsCreated] = useState(false);
-
   const token = getToken();
 
   const fetcher = async (url) => {
@@ -39,19 +34,7 @@ function Team() {
 
   if (isLoading) return <Loading />;
 
-  return (
-    <div>
-      {isCreated ? (
-        <TeamCreate setIsCreated={setIsCreated} />
-      ) : (
-        <>
-          <DynamicToolBar title={`All Team`} setIsCreated={setIsCreated} />
-          <TeamHeader />
-          <TeamContent teamArr={teamArr} />
-        </>
-      )}
-    </div>
-  );
+  return <div>SocialMediaLiveScreen</div>;
 }
 
-export default Team;
+export default SocialMediaLiveScreen;

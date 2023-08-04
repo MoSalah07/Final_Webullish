@@ -1,18 +1,16 @@
 "use client";
 import React, { useState } from "react";
 // Components
-import TeamContent from "@/app/components/team/TeamContent";
-import TeamHeader from "@/app/components/team/TeamHeader";
-import TeamCreate from "@/app/components/team/teamCreate/TeamCreate";
-import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
 import Loading from "@/app/components/loading/Loading";
+import CreateFollowUp from "@/app/components/followUpPages/CreateFollowUp";
+import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
 // Fetch Data
 import axios from "axios";
 import useSWR from "swr";
 // Token
 import { getToken } from "@/app/lib/localStorage";
 
-function Team() {
+function FollowUpPagesScreen() {
   const [isCreated, setIsCreated] = useState(false);
 
   const token = getToken();
@@ -26,32 +24,36 @@ function Team() {
       });
       return data;
     } catch (err) {
-      console.log(err);
-      return err.message;
+      console.log(err.message);
+      return err;
     }
   };
 
   const {
     isLoading,
-    data: teamArr,
+    data: followUpArr,
     error,
-  } = useSWR(`${process.env.NEXT_PUBLIC_URL_BD}/api/team/show_all`, fetcher);
+  } = useSWR(
+    `${process.env.NEXT_PUBLIC_URL_BD}/api/FollowUpPages/show_all`,
+    fetcher
+  );
+
+  console.log(followUpArr);
 
   if (isLoading) return <Loading />;
 
   return (
-    <div>
+    <>
+      <title>FollowUp</title>
       {isCreated ? (
-        <TeamCreate setIsCreated={setIsCreated} />
+        <CreateFollowUp setIsCreated={setIsCreated} />
       ) : (
         <>
-          <DynamicToolBar title={`All Team`} setIsCreated={setIsCreated} />
-          <TeamHeader />
-          <TeamContent teamArr={teamArr} />
+          <DynamicToolBar title={`All Follow Up`} setIsCreated={setIsCreated} />
         </>
       )}
-    </div>
+    </>
   );
 }
 
-export default Team;
+export default FollowUpPagesScreen;

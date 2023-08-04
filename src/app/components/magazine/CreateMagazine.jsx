@@ -54,7 +54,7 @@ function CreateMagazine({ setIsCreated }) {
         },
       });
       setIsDisabled(false);
-      toastifySuccess('Added successfully');
+      toastifySuccess("Added successfully");
       mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/magazine/show_all`, true);
       reset();
     } catch (err) {

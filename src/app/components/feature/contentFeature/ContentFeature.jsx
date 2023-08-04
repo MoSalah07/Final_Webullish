@@ -1,8 +1,8 @@
-"use client";
 import React, { useState } from "react";
-import ItemFqs from "./ItemFqs";
+// Components
+import FeatureCard from "./FeatureCard";
 
-function AllFqs({ fqsArr }) {
+function ContentFeature({ featureArr }) {
   const [open, setOpen] = useState(false);
 
   const toggle = (index) => {
@@ -14,12 +14,12 @@ function AllFqs({ fqsArr }) {
 
   return (
     <div>
-      {fqsArr &&
-        Array.isArray(fqsArr) &&
-        fqsArr.map((fqs, index) => (
-          <ItemFqs
-            key={fqs.id}
-            {...fqs}
+      {featureArr &&
+        Array.isArray(featureArr) &&
+        featureArr.map((feature, index) => (
+          <FeatureCard
+            key={feature.id}
+            {...feature}
             open={index === open}
             toggle={() => toggle(index)}
           />
@@ -28,4 +28,4 @@ function AllFqs({ fqsArr }) {
   );
 }
 
-export default AllFqs;
+export default ContentFeature;
