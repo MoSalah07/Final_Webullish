@@ -51,7 +51,7 @@ function TrainingVideoScreen() {
             title={`Training Video`}
             setIsCreated={setIsCreated}
           />
-            <ContentTrainingVideo trainingVideoArr={trainingVideoArr} />
+          <ContentTrainingVideo trainingVideoArr={trainingVideoArr} />
         </>
       )}
     </div>

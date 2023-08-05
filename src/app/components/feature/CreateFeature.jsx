@@ -22,12 +22,7 @@ function CreateFeature({ setIsCreated }) {
 
   const token = getToken();
 
-  const handelCreateFeature = async ({
-    featureName,
-    description,
-    image,
-    icon,
-  }) => {
+  const handelCreateFeature = async ({ featureName, description, image }) => {
     try {
       setIsDisabled(true);
       const { data } = await axios({
@@ -36,7 +31,7 @@ function CreateFeature({ setIsCreated }) {
         data: {
           name: featureName,
           description,
-          icon: icon,
+          icon: image,
         },
         headers: {
           Authorization: `Bearer ${token}`,
@@ -59,9 +54,9 @@ function CreateFeature({ setIsCreated }) {
     <div>
       <h2 className="text-xl font-semibold capitalize mb-8">add new feature</h2>
       <form onSubmit={handleSubmit(handelCreateFeature)}>
-        {/* <div className="mb-2">
+        <div className="mb-2">
           <UploadImage register={register} errors={errors} title={`Feature`} />
-        </div> */}
+        </div>
         <div className="flex flex-col justify-center gap-2 mb-2">
           <label className="capitalize font-medium" htmlFor="featureName">
             feature name
@@ -98,25 +93,6 @@ function CreateFeature({ setIsCreated }) {
           />
           {errors.description && (
             <div className="text-red-500">{errors.description.message}</div>
-          )}
-        </div>
-        <div className="flex flex-col justify-center gap-2 mb-2">
-          <label className="capitalize font-medium" htmlFor="icon">
-            Icon
-          </label>
-          <input
-            {...register("icon", {
-              required: "Please Enter icon",
-            })}
-            className={`py-2 outline-primary-btn rounded-primary-rounded px-4
-          placeholder:text-sm`}
-            id="icon"
-            name="icon"
-            type="text"
-            placeholder="icon"
-          />
-          {errors.icon && (
-            <div className="text-red-500">{errors.icon.message}</div>
           )}
         </div>
         <div className="flex sm:items-center flex-col justify-center gap-6 sm:gap-0 sm:flex-row sm:justify-between mt-12">

@@ -5,7 +5,7 @@ import SwitchSetting from "./switchSetting/SwitchSetting";
 
 function Aside() {
   return (
-    <aside className="bg-primary-white flex items-center flex-col lg:overflow-y-auto col-span-2 p-2 md:p-4 h-screen">
+    <aside className="bg-primary-white flex items-center flex-col md:overflow-y-auto col-span-2 p-2 md:p-4 h-screen">
       <LogoAside />
       <Aside_List />
       <SwitchSetting />

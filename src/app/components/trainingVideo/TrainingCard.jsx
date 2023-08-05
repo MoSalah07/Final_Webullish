@@ -10,12 +10,22 @@ import { getToken } from "@/app/lib/localStorage";
 import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
 import FAQComponent from "../utils/FAQComponent";
 
-function TrainingCard({ name, description, toggle, id, open }) {
+function TrainingCard({
+  name,
+  description,
+  simple_description,
+  video,
+  video_description,
+  video_title,
+  toggle,
+  id,
+  open,
+}) {
   const token = getToken();
 
   const providerFQS = {
-    name,
-    description,
+    name: video_title,
+    description: video_description,
     toggle,
     id,
     open,
@@ -31,7 +41,7 @@ function TrainingCard({ name, description, toggle, id, open }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      toastifySuccess("Deleted Training Video successfully");
+      toastifySuccess(`Deleted Training Video ${video_title} successfully`);
       mutate(
         `${process.env.NEXT_PUBLIC_URL_BD}/api/training_video/show_all`,
         true

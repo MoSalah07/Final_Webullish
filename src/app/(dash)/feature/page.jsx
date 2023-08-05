@@ -30,12 +30,10 @@ function FeatureScreen() {
     }
   };
 
-  const {
-    isLoading,
-    data: featureArr,
-    error,
-  } = useSWR(`${process.env.NEXT_PUBLIC_URL_BD}/api/feature/show_all`, fetcher);
-
+  const { isLoading, data, error } = useSWR(
+    `${process.env.NEXT_PUBLIC_URL_BD}/api/feature/show_all`,
+    fetcher
+  );
 
   if (isLoading) return <Loading />;
   return (
@@ -46,8 +44,8 @@ function FeatureScreen() {
           <CreateFeature setIsCreated={setIsCreated} />
         ) : (
           <>
-              <DynamicToolBar title={`Feature`} setIsCreated={setIsCreated} />
-              <ContentFeature featureArr={featureArr} />
+            <DynamicToolBar title={`Feature`} setIsCreated={setIsCreated} />
+            <ContentFeature featureArr={data.features} />
           </>
         )}
       </div>

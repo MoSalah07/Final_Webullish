@@ -1,0 +1,7 @@
+{
+  "/(dash)/trainingVideo/page": "app/(dash)/trainingVideo/page.js",
+  "/(dash)/topNotification/page": "app/(dash)/topNotification/page.js",
+  "/(dash)/followUpPages/page": "app/(dash)/followUpPages/page.js",
+  "/(dash)/feature/page": "app/(dash)/feature/page.js",
+  "/(dash)/recentachievement/page": "app/(dash)/recentachievement/page.js"
+}

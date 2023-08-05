@@ -30,7 +30,7 @@ function FeatureCard({ name, description, toggle, id, open }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      toastifySuccess("Deleted successfully");
+      toastifySuccess(`Deleted ${name || ""} successfully`);
       mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/feature/show_all`, true);
     } catch (err) {
       toastifyError(err.message);
