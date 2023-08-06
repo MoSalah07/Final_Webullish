@@ -8,16 +8,19 @@ import LiveContent from "@/app/components/live/LiveContent";
 function Live() {
   const [isCreated, setIsCreated] = useState(false);
   return (
-    <div>
-      {isCreated ? (
-        <CreateLive setIsCreated={setIsCreated} />
-      ) : (
-        <>
-          <DynamicToolBar title={`All Live`} setIsCreated={setIsCreated} />
-          <LiveContent />
-        </>
-      )}
-    </div>
+    <>
+      <title>Live</title>
+      <div>
+        {isCreated ? (
+          <CreateLive setIsCreated={setIsCreated} />
+        ) : (
+          <>
+            <DynamicToolBar title={`All Live`} setIsCreated={setIsCreated} />
+            <LiveContent />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

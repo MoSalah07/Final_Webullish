@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import AllFqs from "@/app/components/fqs/AllFqs";
 import DynamicToolBar from "@/app/components/utils/DynamicToolBar";
 import CreateFqs from "@/app/components/fqs/CreateFqs";
+import Loading from "@/app/components/loading/Loading";
 // Fetch Data
 import axios from "axios";
 import useSWR from "swr";
@@ -35,17 +36,22 @@ function Fqs() {
     error,
   } = useSWR(`${process.env.NEXT_PUBLIC_URL_BD}/api/faq/show_all`, fetcher);
 
+  if (isLoading) return <Loading />;
+
   return (
-    <div>
-      {isCreated ? (
-        <CreateFqs setIsCreated={setIsCreated} />
-      ) : (
-        <>
-          <DynamicToolBar title={`All FAQ's`} setIsCreated={setIsCreated} />
-          <AllFqs fqsArr={fqsArr} />
-        </>
-      )}
-    </div>
+    <>
+      <title>FQS</title>
+      <div>
+        {isCreated ? (
+          <CreateFqs setIsCreated={setIsCreated} />
+        ) : (
+          <>
+            <DynamicToolBar title={`All FAQ's`} setIsCreated={setIsCreated} />
+            <AllFqs fqsArr={fqsArr} />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

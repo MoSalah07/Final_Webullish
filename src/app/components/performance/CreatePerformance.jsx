@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // Validation
 import { useForm } from "react-hook-form";
 // Fetch
@@ -17,6 +17,8 @@ function CreatePerformance({ setIsCreated }) {
     reset,
   } = useForm();
 
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const token = getToken();
 
   const handleCreatePerformance = async ({
@@ -27,6 +29,7 @@ function CreatePerformance({ setIsCreated }) {
     comment,
   }) => {
     try {
+      setIsDisabled(true);
       const { data } = await axios({
         url: `${process.env.NEXT_PUBLIC_URL_BD}/api/performance/save`,
         method: "POST",
@@ -47,9 +50,11 @@ function CreatePerformance({ setIsCreated }) {
         `${process.env.NEXT_PUBLIC_URL_BD}/api/performance/show_all`,
         true
       );
+      setIsDisabled(false);
       setIsCreated(false);
     } catch (err) {
       toastifyError(err.message);
+      setIsDisabled(false);
     }
   };
 
@@ -91,6 +96,8 @@ function CreatePerformance({ setIsCreated }) {
             id="target"
             name="target"
             type="number"
+            min={0}
+            max={100}
             placeholder="target"
             {...register("target", { required: "Please Enter Target" })}
           />
@@ -108,6 +115,8 @@ function CreatePerformance({ setIsCreated }) {
             id="reached"
             name="reached"
             type="number"
+            min={0}
+            max={100}
             placeholder="reached%"
             {...register("reached", { required: "Please Enter Reached" })}
           />
@@ -124,7 +133,7 @@ function CreatePerformance({ setIsCreated }) {
           placeholder:text-sm [&::-webkit-inner-spin-button]:appearance-none`}
             id="comment"
             name="comment"
-            type="number"
+            type="text"
             placeholder="comment"
             {...register("comment", { required: "Please Enter Comment" })}
           />
@@ -170,10 +179,16 @@ function CreatePerformance({ setIsCreated }) {
             cancel
           </button>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between sm:justify-center gap-2 sm:gap-6 lg:gap-12">
-            <button className="py-2 px-8 bg-primary-btn text-primary-white rounded-primary-rounded capitalize text-sm">
+            <button
+              disabled={isDisabled}
+              className="py-2 px-8 bg-primary-btn text-primary-white rounded-primary-rounded capitalize text-sm"
+            >
               save
             </button>
-            <button className="py-2 px-4 border-primary-btn border rounded-primary-rounded capitalize text-sm">
+            <button
+              disabled={true}
+              className="py-2 px-4 border-primary-btn border rounded-primary-rounded capitalize text-sm"
+            >
               save & create another
             </button>
           </div>

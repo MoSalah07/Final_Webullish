@@ -42,19 +42,22 @@ function RecentachievementScreen() {
 
   if (isLoading) return <Loading />;
   return (
-    <div>
-      {isCreated ? (
-        <CreateRecentachievement setIsCreated={setIsCreated} />
-      ) : (
-        <>
-          <DynamicToolBar
-            title={`All recentachievement`}
-            setIsCreated={setIsCreated}
-          />
-          <AllRecentachievement recentachievementArr={recentachievementArr} />
-        </>
-      )}
-    </div>
+    <>
+      <title>Recentachievement</title>
+      <div>
+        {isCreated ? (
+          <CreateRecentachievement setIsCreated={setIsCreated} />
+        ) : (
+          <>
+            <DynamicToolBar
+              title={`All recentachievement`}
+              setIsCreated={setIsCreated}
+            />
+            <AllRecentachievement recentachievementArr={recentachievementArr} />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

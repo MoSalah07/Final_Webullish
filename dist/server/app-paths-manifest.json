@@ -1,7 +1,10 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/(dash)/fqs/page": "app/(dash)/fqs/page.js",
+  "/(dash)/team/page": "app/(dash)/team/page.js",
+  "/(dash)/recentachievement/page": "app/(dash)/recentachievement/page.js",
   "/(dash)/trainingVideo/page": "app/(dash)/trainingVideo/page.js",
   "/(dash)/topNotification/page": "app/(dash)/topNotification/page.js",
-  "/(dash)/followUpPages/page": "app/(dash)/followUpPages/page.js",
-  "/(dash)/feature/page": "app/(dash)/feature/page.js",
-  "/(dash)/recentachievement/page": "app/(dash)/recentachievement/page.js"
+  "/(dash)/live/page": "app/(dash)/live/page.js",
+  "/(dash)/magazine/[id]/page": "app/(dash)/magazine/[id]/page.js"
 }

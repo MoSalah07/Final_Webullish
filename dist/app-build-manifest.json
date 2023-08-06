@@ -1,11 +1,5 @@
 {
   "pages": {
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -16,10 +10,47 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(dash)/layout.js"
     ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/(dash)/topNotification/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dash)/topNotification/page.js"
+    ],
     "/(dash)/dashboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(dash)/dashboard/page.js"
+    ],
+    "/(dash)/fqs/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dash)/fqs/page.js"
+    ],
+    "/(dash)/team/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dash)/team/page.js"
+    ],
+    "/(dash)/magazine/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(dash)/magazine/page.css",
+      "static/chunks/app/(dash)/magazine/page.js"
+    ],
+    "/(dash)/performance/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dash)/performance/page.js"
+    ],
+    "/(dash)/performance/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dash)/performance/[id]/page.js"
     ],
     "/(dash)/followUpPages/page": [
       "static/chunks/webpack.js",
@@ -31,20 +62,30 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(dash)/feature/page.js"
     ],
-    "/(dash)/trainingVideo/page": [
+    "/(dash)/advertisement/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(dash)/trainingVideo/page.js"
+      "static/chunks/app/(dash)/advertisement/page.js"
     ],
-    "/(dash)/topNotification/page": [
+    "/(dash)/live/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(dash)/topNotification/page.js"
+      "static/chunks/app/(dash)/live/page.js"
     ],
     "/(dash)/recentachievement/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(dash)/recentachievement/page.js"
+    ],
+    "/(dash)/trainingVideo/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dash)/trainingVideo/page.js"
+    ],
+    "/(dash)/magazine/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dash)/magazine/[id]/page.js"
     ]
   }
 }

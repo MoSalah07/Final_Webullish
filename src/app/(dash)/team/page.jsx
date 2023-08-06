@@ -40,17 +40,20 @@ function Team() {
   if (isLoading) return <Loading />;
 
   return (
-    <div>
-      {isCreated ? (
-        <TeamCreate setIsCreated={setIsCreated} />
-      ) : (
-        <>
-          <DynamicToolBar title={`All Team`} setIsCreated={setIsCreated} />
-          <TeamHeader />
-          <TeamContent teamArr={teamArr} />
-        </>
-      )}
-    </div>
+    <>
+      <title>Team</title>
+      <div>
+        {isCreated ? (
+          <TeamCreate setIsCreated={setIsCreated} />
+        ) : (
+          <>
+            <DynamicToolBar title={`All Team`} setIsCreated={setIsCreated} />
+            <TeamHeader />
+            <TeamContent teamArr={teamArr} />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

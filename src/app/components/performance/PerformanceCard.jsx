@@ -9,7 +9,7 @@ function PerformanceCard({ month, title, description, id }) {
       <p className="font-normal text-base">{description}</p>
       <Link
         className="uppercase rounded-primary-rounded bg-primary-yellow text-center text-primary-white w-[50%] py-2 mx-auto font-semibold"
-        href={`/performance/${id}`}
+        href={`/performance/performanceDetails?id=${id}`}
       >
         see results
       </Link>

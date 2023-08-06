@@ -1589,6 +1589,9 @@ video {
 .gap-8 {
   gap: 2rem;
 }
+.overflow-x-auto {
+  overflow-x: auto;
+}
 .overflow-y-auto {
   overflow-y: auto;
 }
@@ -2227,14 +2230,6 @@ video {
     gap: 2rem;
   }
 
-  .sm\:overflow-y-auto {
-    overflow-y: auto;
-  }
-
-  .sm\:overflow-x-hidden {
-    overflow-x: hidden;
-  }
-
   .sm\:p-3 {
     padding: 0.75rem;
   }
@@ -2283,6 +2278,14 @@ video {
   .sm\:font-semibold {
     font-weight: 600;
   }
+
+  .smallScreen\:overflow-y-auto {
+    overflow-y: auto;
+  }
+
+  .smallScreen\:overflow-x-hidden {
+    overflow-x: hidden;
+  }
 }
 
   @media (min-width: 768px) {
@@ -2329,10 +2332,6 @@ video {
 
   .md\:gap-12 {
     gap: 3rem;
-  }
-
-  .md\:overflow-y-auto {
-    overflow-y: auto;
   }
 
   .md\:p-4 {
@@ -2420,10 +2419,6 @@ video {
 
   .lg\:gap-6 {
     gap: 1.5rem;
-  }
-
-  .lg\:overflow-y-auto {
-    overflow-y: auto;
   }
 
   .lg\:text-base {

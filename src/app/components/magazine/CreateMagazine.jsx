@@ -53,15 +53,14 @@ function CreateMagazine({ setIsCreated }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      setIsDisabled(false);
       toastifySuccess("Added successfully");
       mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/magazine/show_all`, true);
+      setIsDisabled(false);
       reset();
     } catch (err) {
       toastifyError(err.message);
       setIsDisabled(false);
     }
-    setIsDisabled(false);
     setDatesend(new Date());
     setIsCreated(false);
   };

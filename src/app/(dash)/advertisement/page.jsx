@@ -40,19 +40,22 @@ function Advertisement() {
   if (isLoading) return <div>Loading ...</div>;
 
   return (
-    <div>
-      {isCreated ? (
-        <CreateAdvertisment setIsCreated={setIsCreated} />
-      ) : (
-        <>
-          <DynamicToolBar
-            title={`All Advertisment`}
-            setIsCreated={setIsCreated}
-          />
-          <AdvertismentContent advertisementArr={advertisementArr} />
-        </>
-      )}
-    </div>
+    <>
+      <title>Advertisment</title>
+      <div>
+        {isCreated ? (
+          <CreateAdvertisment setIsCreated={setIsCreated} />
+        ) : (
+          <>
+            <DynamicToolBar
+              title={`All Advertisment`}
+              setIsCreated={setIsCreated}
+            />
+            <AdvertismentContent advertisementArr={advertisementArr} />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

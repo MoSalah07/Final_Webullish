@@ -6,7 +6,7 @@ import MainMagazine from "@/app/components/magazine/contentMagazine/MainMagazine
 import CreateMagazine from "@/app/components/magazine/CreateMagazine";
 // Fetch Data
 import axios from "axios";
-import  useSWR  from "swr";
+import useSWR from "swr";
 // Token
 import { getToken } from "@/app/lib/localStorage";
 
@@ -29,24 +29,34 @@ function Magazine() {
     }
   };
 
-  const {isLoading,data: magazineArr,error,} = useSWR(`${process.env.NEXT_PUBLIC_URL_BD}/api/magazine/show_all`,fetcher);
-  
+  const {
+    isLoading,
+    data: magazineArr,
+    error,
+  } = useSWR(
+    `${process.env.NEXT_PUBLIC_URL_BD}/api/magazine/show_all`,
+    fetcher
+  );
+
   return (
-    <div>
-      {isCreated ? (
-        <>
-          <CreateMagazine setIsCreated={setIsCreated} />
-        </>
-      ) : (
-        <>
-          <DynamicToolBar
-            title={`All blog magazine`}
-            setIsCreated={setIsCreated}
-          />
+    <>
+      <title>Magazine</title>
+      <div>
+        {isCreated ? (
+          <>
+            <CreateMagazine setIsCreated={setIsCreated} />
+          </>
+        ) : (
+          <>
+            <DynamicToolBar
+              title={`All blog magazine`}
+              setIsCreated={setIsCreated}
+            />
             <MainMagazine magazineArr={magazineArr} />
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

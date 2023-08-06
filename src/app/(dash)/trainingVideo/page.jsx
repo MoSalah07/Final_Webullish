@@ -42,19 +42,22 @@ function TrainingVideoScreen() {
   if (isLoading) return <Loading />;
 
   return (
-    <div>
-      {isCreated ? (
-        <CreateTrainingVideo setIsCreated={setIsCreated} />
-      ) : (
-        <>
-          <DynamicToolBar
-            title={`Training Video`}
-            setIsCreated={setIsCreated}
-          />
-          <ContentTrainingVideo trainingVideoArr={trainingVideoArr} />
-        </>
-      )}
-    </div>
+    <>
+      <title>Training Video</title>
+      <div>
+        {isCreated ? (
+          <CreateTrainingVideo setIsCreated={setIsCreated} />
+        ) : (
+          <>
+            <DynamicToolBar
+              title={`Training Video`}
+              setIsCreated={setIsCreated}
+            />
+            <ContentTrainingVideo trainingVideoArr={trainingVideoArr} />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

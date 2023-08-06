@@ -2,8 +2,11 @@
 
 export default function Dashboard() {
   return (
-    <section className="bg-secondary-white h-screen overflow-y-auto">
-      dashboard
-    </section>
+    <>
+      <title>Dashboard</title>
+      <section className="bg-secondary-white h-screen overflow-y-auto">
+        dashboard
+      </section>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 // Validation
 import { useForm } from "react-hook-form";
 // Fetch Data
@@ -11,6 +11,8 @@ import { getToken } from "@/app/lib/localStorage";
 import { toastifySuccess, toastifyError } from "@/app/lib/alerts";
 
 function CreateFqs({ setIsCreated }) {
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const {
     register,
     formState: { errors },
@@ -22,6 +24,7 @@ function CreateFqs({ setIsCreated }) {
 
   const handlerSubmit = async ({ answer, question }) => {
     try {
+      setIsDisabled(true);
       const { data } = await axios({
         url: `${process.env.NEXT_PUBLIC_URL_BD}/api/faq/save`,
         method: "POST",
@@ -36,9 +39,11 @@ function CreateFqs({ setIsCreated }) {
       toastifySuccess("Added successfully");
       mutate(`${process.env.NEXT_PUBLIC_URL_BD}/api/faq/show_all`, true);
       reset();
+      setIsDisabled(false);
       setIsCreated(false);
     } catch (err) {
       toastifyError(err.message);
+      setIsDisabled(false);
     }
   };
 
@@ -93,10 +98,16 @@ function CreateFqs({ setIsCreated }) {
             cancel
           </button>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between sm:justify-center gap-2 sm:gap-6 lg:gap-12">
-            <button className="py-2 px-8 bg-primary-btn text-primary-white rounded-primary-rounded capitalize text-sm">
+            <button
+              disabled={isDisabled}
+              className="py-2 px-8 bg-primary-btn text-primary-white rounded-primary-rounded capitalize text-sm"
+            >
               save
             </button>
-            <button className="py-2 px-4 border-primary-btn border rounded-primary-rounded capitalize text-sm">
+            <button
+              disabled={true}
+              className="py-2 px-4 border-primary-btn border rounded-primary-rounded capitalize text-sm"
+            >
               save & create another
             </button>
           </div>
