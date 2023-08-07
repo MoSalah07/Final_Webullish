@@ -43,7 +43,7 @@ function RecentachievementScreen() {
   if (isLoading) return <Loading />;
   return (
     <>
-      <title>Recentachievement</title>
+      <title>Page Recentachievement</title>
       <div>
         {isCreated ? (
           <CreateRecentachievement setIsCreated={setIsCreated} />
